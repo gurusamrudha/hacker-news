@@ -1,6 +1,6 @@
 <ng-container *ngIf="(items$ | async)?.length > 0; else noComments">
   <div class="example-card" *ngFor="let item of (items$ | async)">
-    <mat-card *ngIf="item">
+    <mat-card *ngIf="item?.by">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{item?.by | titlecase}}</mat-card-title>
