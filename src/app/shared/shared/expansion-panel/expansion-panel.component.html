@@ -1,0 +1,53 @@
+<ng-container *ngIf="(items$ | async); else noItem">
+  <ng-container *ngFor="let item of (items$ | async)">
+
+      <mat-accordion *ngIf="item" class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+
+            <!--Story Title-->
+            <mat-panel-title>
+              <span><span class="item-score">{{ item?.score }}</span>&nbsp;&nbsp;{{item?.title}}
+                <a [href]="item?.url">
+                  <mat-icon>north_east</mat-icon>
+                </a>
+              </span>
+            </mat-panel-title>
+            <!--/Story Title-->
+
+            <!--Comments count-->
+            <div class="icons-badge" *ngIf="!isScreenSmall">
+              <mat-icon [matBadge]="item?.kids ? item?.kids.length : undefined"
+              [routerLink]="['/comments', item?.id]" i18n>comment</mat-icon>
+            </div>
+            <!--/Comments count-->
+
+          </mat-expansion-panel-header>
+
+          <!--Author and time-->
+          <mat-panel-description>
+            <strong>{{item?.by | titlecase}}</strong>
+            <span>{{item?.time | date:'short'}}</span>
+            <span *ngIf="isScreenSmall"[routerLink]="['/comments', item?.id]"><a class="active" i18n>{{item?.kids?.length || 0}} comments</a></span>
+          </mat-panel-description>
+          <!--/Author and time-->
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+  </ng-container>
+</ng-container>
+
+<!--Loading progress bar-->
+<ng-template #noItem>
+  <div class="loading-data">
+    <h4 i18n>Loading Data...</h4>
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
+  </div>
+</ng-template>
+<!--/Loading progress bar-->
+
+
+
+
+

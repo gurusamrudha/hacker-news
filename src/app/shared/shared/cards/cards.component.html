@@ -1,0 +1,21 @@
+<ng-container *ngIf="(items$ | async)?.length > 0; else noComments">
+  <div class="example-card" *ngFor="let item of (items$ | async)">
+    <mat-card *ngIf="item">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{item?.by | titlecase}}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>{{item?.text ? item?.text : item?.title}} </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>
+
+
+<ng-template #noComments>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title i18n>No Comments!! <a class="active" routerLink='/'>Let me take you to Home :)</a></mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</ng-template>

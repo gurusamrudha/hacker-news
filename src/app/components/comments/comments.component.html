@@ -1,0 +1,9 @@
+<app-cards [currentPageIds]="currentPageIds$ | async"></app-cards>
+
+<ng-container *ngIf="(commentIds$ | async)?.length">
+  <app-pagination
+    [length]="(commentIds$ | async)?.length"
+    (pageEvents)="getPageEvents($event)"></app-pagination>
+</ng-container>
+
+

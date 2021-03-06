@@ -1,0 +1,10 @@
+<app-expansion-panel [currentPageIds]="currentPageIds$ | async" [isScreenSmall]="isSmallViewport$ | async"></app-expansion-panel>
+
+<ng-container *ngIf="(storyIds$ | async)?.length">
+  <app-pagination
+    [length]="(storyIds$ | async)?.length"
+    (pageEvents)="getPageEvents($event)"></app-pagination>
+</ng-container>
+
+
+
