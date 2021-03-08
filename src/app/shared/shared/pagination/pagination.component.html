@@ -1,4 +1,5 @@
-<mat-paginator [length]="length"
+<mat-paginator #pagination
+              [length]="length"
               [pageSize]="10"
               showFirstLastButtons
               (page)="getAllEvents($event)">

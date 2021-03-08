@@ -16,7 +16,7 @@
             <!--/Story Title-->
 
             <!--Comments count-->
-            <div class="icons-badge" *ngIf="!isScreenSmall">
+            <div class="icons-badge" id="icon-badge" *ngIf="!isScreenSmall">
               <mat-icon [matBadge]="item?.kids ? item?.kids.length : undefined"
               [routerLink]="['/comments', item?.id]" i18n>comment</mat-icon>
             </div>
@@ -27,8 +27,8 @@
           <!--Author and time-->
           <mat-panel-description>
             <strong>{{item?.by | titlecase}}</strong>
-            <span>{{item?.time | date:'short'}}</span>
-            <span *ngIf="isScreenSmall"[routerLink]="['/comments', item?.id]"><a class="active" i18n>{{item?.kids?.length || 0}} comments</a></span>
+            <span id="item-date">{{item?.time | date:'short'}}</span>
+            <span *ngIf="isScreenSmall" [routerLink]="['/comments', item?.id]"><a class="active" i18n>{{item?.kids?.length || 0}} comments</a></span>
           </mat-panel-description>
           <!--/Author and time-->
 

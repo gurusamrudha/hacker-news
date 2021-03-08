@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-pagination',
@@ -14,6 +15,9 @@ export class PaginationComponent {
 
   @Output()
   pageEvents = new EventEmitter<{previousPageIndex: number, pageIndex: number, pageSize: number, length: number}>();
+
+  @ViewChild(MatPaginator)
+  pagination: MatPaginator;
 
   getAllEvents($event: {previousPageIndex: number, pageIndex: number, pageSize: number, length: number}): void {
     this.pageEvents.emit($event);
